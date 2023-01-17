@@ -5,8 +5,6 @@
 #WORKDIR /cert
 #RUN dotnet dev-certs https -ep certhttps.pfx -p Password123
 
-
-
 # Use the official Microsoft .NET Core runtime as the base image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 
@@ -17,7 +15,7 @@ WORKDIR /app
 COPY . .
 
 # Restore the application's dependencies
-RUN dotnet restore
+RUN dotnet restore --source https://api.nuget.org/v3/index.json --source https://myget.org/F/myfeed/api/v3/index.json
 
 # Build the application
 RUN dotnet build --configuration Release
