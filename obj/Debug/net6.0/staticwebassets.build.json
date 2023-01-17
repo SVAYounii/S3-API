@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "f5X7b9qp6eA/wKlW11naYm1iNb3o0GI917l/s1DyOlQ=",
+  "Source": "S3-Api-indi",
+  "BasePath": "_content/S3-Api-indi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
