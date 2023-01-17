@@ -1,22 +1,25 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["S3-API/S3-API.csproj", "S3-API/"]
-RUN dotnet restore "S3-API/S3-API.csproj"
+# build stage
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
+WORKDIR /source
 COPY . .
-WORKDIR "/src/S3-API"
-RUN dotnet build "S3-API.csproj" -c Release -o /app/build
+RUN dotnet restore "./S3-Api-indi.csproj" --disable-parallel
+RUN dotnet publish "./S3-Api-indi.csproj" -c release -o /app --no-restore
 
-FROM build AS publish
-RUN dotnet publish "S3-API.csproj" -c Release -o /app/publish
+# env variables
+#ENV <NAME> <DEFAULTVALUE>
 
-FROM base AS final
+# https
+#WORKDIR /cert
+#RUN dotnet dev-certs https -ep certhttps.pfx -p Password123
+
+# serve stage
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
+COPY --from-build /cert ./app
+
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "S3-API.dll"]
+COPY --from-build /app ./
+
+EXPOSE 5000
+EXPOSE 80
+
+ENTRYPOINT ["dotnet", "S3-Api-Indi.dll"]
