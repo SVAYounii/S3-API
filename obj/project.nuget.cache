@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7JPKP1MsGcV8LpQfELsiFS0zq4ZtQFoeIX4bAclCCtXiZ1RAG/rH0QvT3sGhk+gy2N0O3lsmuRpR6nrkkmmQoQ==",
+  "dgSpecHash": "CpQNOXiN7d1Wu5Nj9eqq4IsJJTnYmRmhMvC/0eCCvDcDbFtxCkhHlSOz29CM8hZ3AqeEpSM/+qw+xvnppVOSrA==",
   "success": true,
   "projectFilePath": "C:\\Users\\youne\\source\\repos\\S3-API\\S3-Api-indi.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\youne\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.10\\microsoft.visualstudio.web.codegeneration.6.0.10.nupkg.sha512",
     "C:\\Users\\youne\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.10\\microsoft.visualstudio.web.codegeneration.core.6.0.10.nupkg.sha512",
