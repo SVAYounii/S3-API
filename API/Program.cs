@@ -54,24 +54,24 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT-PORT") ?? "5000");
+//int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT-PORT") ?? "5000");
 
-if (!builder.Environment.IsDevelopment())
-{
-    builder.WebHost.ConfigureKestrel(serverOptions =>
-    {
-        serverOptions.ListenAnyIP(5000, listenOptions =>
-        {
-            listenOptions.UseHttps("certhttps.pfx", "Password123");
-        });
-        serverOptions.ListenAnyIP(80); // NOTE: optionally listen on port 80, too
-    });
-    builder.Services.AddHttpsRedirection(options =>
-    {
-        options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
-        options.HttpsPort = port;
-    });
-}
+//if (!builder.Environment.IsDevelopment())
+//{
+//    builder.WebHost.ConfigureKestrel(serverOptions =>
+//    {
+//        serverOptions.ListenAnyIP(5000, listenOptions =>
+//        {
+//            listenOptions.UseHttps("certhttps.pfx", "Password123");
+//        });
+//        serverOptions.ListenAnyIP(80); // NOTE: optionally listen on port 80, too
+//    });
+//    builder.Services.AddHttpsRedirection(options =>
+//    {
+//        options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
+//        options.HttpsPort = port;
+//    });
+//}
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
