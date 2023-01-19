@@ -81,6 +81,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
+builder.Services.AddControllers()
+    .AddJsonOptions(
+        options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddPolicy("MyPolicy", policy =>
+        policy.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials())
+);
+
 app.UseAuthentication();
 app.UseAuthorization();
 
