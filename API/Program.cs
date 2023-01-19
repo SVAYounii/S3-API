@@ -32,7 +32,7 @@ builder.Services.Configure<JWTSettings>(jwtSection);
 //to validate the token which has been sent by clients
 var appSettings = jwtSection.Get<JWTSettings>();
 var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
-int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5000");
+int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5001");
 
 if (!builder.Environment.IsDevelopment())
 {
