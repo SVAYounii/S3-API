@@ -1,25 +1,25 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["./API/S3-Api-indi.csproj", "."]
-RUN dotnet restore "./S3-Api-indi.csproj"
+# build stage
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
+WORKDIR /source
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./API/S3-Api-indi.csproj" -c Release -o /app/build
+RUN dotnet restore "./API/S3-Api-indi.csproj" --disable-parallel
+RUN dotnet publish "./API/S3-Api-indi.csproj" -c release -o /app --no-restore
 
-FROM build AS publish
-RUN dotnet publish "./API/S3-Api-indi.csproj" -c Release -o /app/publish
+ENV ASPNETCORE_ENVIRONMENT Development
+ENV ASPNETCORE_URLS http://+:80;https://+:5000
+ENV ASPNETCORE_HTTPS_PORT 5000
 
-FROM base AS final
+WORKDIR /cert
+RUN dotnet dev-certs https -ep certhttps.pfx -p Password123
+
+# serve stage
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
+COPY --from=build /cert ./app
+
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app ./
+
+EXPOSE 5000
+EXPOSE 80
+
 ENTRYPOINT ["dotnet", "S3-Api-indi.dll"]
