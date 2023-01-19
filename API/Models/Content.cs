@@ -13,7 +13,7 @@ namespace S3_Api_indi.Models
         {
             ContentGenres = new HashSet<ContentGenre>();
             Favourites = new HashSet<Favourite>();
-            Seasons = new List<Season>();
+            Seasons = new HashSet<Season>();
         }
 
         [Key]
@@ -39,6 +39,6 @@ namespace S3_Api_indi.Models
         [InverseProperty("Content")]
         public virtual ICollection<Favourite> Favourites { get; set; }
         [InverseProperty("Content")]
-        public virtual List<Season> Seasons { get; set; }
+        public virtual ICollection<Season> Seasons { get; set; }
     }
 }

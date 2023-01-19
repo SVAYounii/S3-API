@@ -30,6 +30,11 @@ builder.Services.AddCors(options =>
                       });
 });
 
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddPolicy("MyPolicy", policy =>
+        policy.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials())
+);
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviceComContext>(options =>
 options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString") ?? builder.Configuration.GetConnectionString("dbconn")));
@@ -81,10 +86,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
-builder.Services.AddCors(policyBuilder =>
-    policyBuilder.AddPolicy("MyPolicy", policy =>
-        policy.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials())
-);
 
 app.UseAuthentication();
 app.UseAuthorization();
