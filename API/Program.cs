@@ -10,17 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("MyPolicy",
-//      builder =>
-//      {
-//          //policy.WithOrigins("http://localhost:3006");
-//          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-//      });
-//});
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyPolicy",
@@ -30,13 +19,9 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviceComContext>(options =>
 options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString") ?? builder.Configuration.GetConnectionString("dbconn")));
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 var jwtSection = builder.Configuration.GetSection("JWTSettings");
@@ -47,7 +32,7 @@ builder.Services.Configure<JWTSettings>(jwtSection);
 //to validate the token which has been sent by clients
 var appSettings = jwtSection.Get<JWTSettings>();
 var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
-/*int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT") ?? "5000");
+int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5000");
 
 if (!builder.Environment.IsDevelopment())
 {
@@ -64,7 +49,7 @@ if (!builder.Environment.IsDevelopment())
         options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
         options.HttpsPort = port;
     });
-}*/
+}
 
 
 
@@ -87,7 +72,9 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -99,7 +86,6 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
-app.UseCors("MyPolicy");
 
 
 app.UseAuthentication();
@@ -107,4 +93,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors("MyPolicy");
 app.Run();
