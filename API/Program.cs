@@ -73,18 +73,23 @@ int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_
 
 if (!builder.Environment.IsDevelopment())
 {
-    builder.WebHost.ConfigureKestrel(serverOptions => {
-        serverOptions.ListenAnyIP(5000, listenOptions => {
+    builder.WebHost.ConfigureKestrel(serverOptions =>
+    {
+        serverOptions.ListenAnyIP(5000, listenOptions =>
+        {
             listenOptions.UseHttps("certhttps.pfx", "Password123");
         });
         serverOptions.ListenAnyIP(80); // NOTE: optionally listen on port 80, too
     });
-    builder.Services.AddHttpsRedirection(options => {
+    builder.Services.AddHttpsRedirection(options =>
+    {
         options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
         options.HttpsPort = port;
     });
 }
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
