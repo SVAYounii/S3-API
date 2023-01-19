@@ -23,17 +23,13 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("localhost:3006", "localhost:3006/Login").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                      });
+    options.AddPolicy("MyPolicy",
+    builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
 });
 
-builder.Services.AddCors(policyBuilder =>
-    policyBuilder.AddPolicy("MyPolicy", policy =>
-        policy.SetIsOriginAllowed(_ => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials())
-);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviceComContext>(options =>
@@ -84,7 +80,7 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors("MyPolicy");
 
 
 app.UseAuthentication();
