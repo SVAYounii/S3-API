@@ -9,16 +9,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("MyPolicy",
+//      builder =>
+//      {
+//          //policy.WithOrigins("http://localhost:3006");
+//          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+//      });
+//});
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyPolicy",
-      builder =>
-      {
-          //policy.WithOrigins("http://localhost:3006");
-          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-      });
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("127.0.0.1:3006").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                      });
 });
-
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviceComContext>(options =>
@@ -67,15 +77,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(builder => {
-    builder.AllowAnyOrigin();
-    builder.AllowAnyHeader();
-    builder.AllowAnyMethod();
-});
-
 
 app.UseHttpsRedirection();
-app.UseCors("MyPolicy");
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
