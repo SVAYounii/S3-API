@@ -348,3 +348,4 @@ C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\refint\T
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\TestProjectMovieCom.pdb
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\TestProjectMovieCom.genruntimeconfig.cache
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\ref\TestProjectMovieCom.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\appsettings.Docker.json
