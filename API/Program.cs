@@ -32,24 +32,6 @@ builder.Services.Configure<JWTSettings>(jwtSection);
 //to validate the token which has been sent by clients
 var appSettings = jwtSection.Get<JWTSettings>();
 var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
-int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5001");
-
-if (!builder.Environment.IsDevelopment())
-{
-    builder.WebHost.ConfigureKestrel(serverOptions =>
-    {
-        serverOptions.ListenAnyIP(5000, listenOptions =>
-        {
-            listenOptions.UseHttps("certhttps.pfx", "Password123");
-        });
-        serverOptions.ListenAnyIP(80); // NOTE: optionally listen on port 80, too
-    });
-    builder.Services.AddHttpsRedirection(options =>
-    {
-        options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
-        options.HttpsPort = port;
-    });
-}
 
 
 
@@ -77,6 +59,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
+int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5000");
+
+if (!builder.Environment.IsDevelopment())
+{
+    builder.WebHost.ConfigureKestrel(serverOptions =>
+    {
+        serverOptions.ListenAnyIP(5000, listenOptions =>
+        {
+            listenOptions.UseHttps("certhttps.pfx", "Password123");
+        });
+        serverOptions.ListenAnyIP(80); // NOTE: optionally listen on port 80, too
+    });
+    builder.Services.AddHttpsRedirection(options =>
+    {
+        options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
+        options.HttpsPort = port;
+    });
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
