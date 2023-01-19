@@ -12,9 +12,9 @@ namespace S3_Api_indi.Repository
 {
     public class GenreRepository
     {
-        private readonly MoviceComContext _context;
+        private readonly MovieComContext _context;
 
-        public GenreRepository(MoviceComContext context)
+        public GenreRepository(MovieComContext context)
         {
             _context = context;
         }

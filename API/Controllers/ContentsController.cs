@@ -17,9 +17,9 @@ namespace S3_Api_indi.Controllers
     [ApiController]
     public class ContentsController : ControllerBase
     {
-        private readonly MoviceComContext _context;
+        private readonly MovieComContext _context;
 
-        public ContentsController(MoviceComContext context)
+        public ContentsController(MovieComContext context)
         {
             _context = context;
         }

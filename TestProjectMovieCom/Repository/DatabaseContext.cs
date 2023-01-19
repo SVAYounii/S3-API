@@ -12,12 +12,12 @@ namespace TestProject.Repository
 {
     public class DatabaseContext
     {
-        public async Task<MoviceComContext> GetDatabaseContext()
+        public async Task<MovieComContext> GetDatabaseContext()
         {
-            var option = new DbContextOptionsBuilder<MoviceComContext>()
+            var option = new DbContextOptionsBuilder<MovieComContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
-            var databaseContext = new MoviceComContext(option);
+            var databaseContext = new MovieComContext(option);
             databaseContext.Database.EnsureCreated();
             if (await databaseContext.Genres.CountAsync() <= 0)
             {

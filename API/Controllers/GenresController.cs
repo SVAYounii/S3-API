@@ -15,9 +15,9 @@ namespace S3_Api_indi.Controllers
     [ApiController]
     public class GenresController : ControllerBase
     {
-        private readonly MoviceComContext _context;
-
-        public GenresController(MoviceComContext context)
+        private readonly MovieComContext _context;
+        
+        public GenresController(MovieComContext context)
         {
             _context = context;
         }

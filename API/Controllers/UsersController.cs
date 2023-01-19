@@ -19,10 +19,10 @@ namespace S3_Api_indi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly MoviceComContext _context;
+        private readonly MovieComContext _context;
         private readonly JWTSettings _jwtsettings;
 
-        public UsersController(MoviceComContext context, IOptions<JWTSettings> jwtsettings)
+        public UsersController(MovieComContext context, IOptions<JWTSettings> jwtsettings)
         {
             _context = context;
             _jwtsettings = jwtsettings.Value;
@@ -100,7 +100,7 @@ namespace S3_Api_indi.Controllers
 
         // Post: api/Users/5
         [HttpPost("LoginUser/")]
-        public async Task<ActionResult<User>> LoginUser([FromBody] User user)
+        public async Task<ActionResult<UserWithToken>> LoginUser([FromBody] User user)
         {
             user = await _context.Users
                                             .Where(u => u.Username == user.Username && u.Password == user.Password)
@@ -131,7 +131,7 @@ namespace S3_Api_indi.Controllers
 
         // POST: api/Users
         [HttpPost("Login/")]
-        public async Task<ActionResult<User>> Login([FromBody] User user)
+        public async Task<ActionResult<UserWithToken>> Login([FromBody] User user)
         {
             user = await _context.Users
                                         .Where(u => u.Username == user.Username
