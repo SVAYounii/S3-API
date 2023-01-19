@@ -11,9 +11,9 @@ namespace S3_Api_indi.Models
     {
         public Content()
         {
-            ContentGenres = new HashSet<ContentGenre>();
-            Favourites = new HashSet<Favourite>();
-            Seasons = new HashSet<Season>();
+            ContentGenres = new List<ContentGenre>();
+            Favourites = new List<Favourite>();
+            Seasons = new List<Season>();
         }
 
         [Key]
@@ -35,10 +35,10 @@ namespace S3_Api_indi.Models
         public byte? Movie { get; set; }
 
         [InverseProperty("Content")]
-        public virtual ICollection<ContentGenre> ContentGenres { get; set; }
+        public virtual List<ContentGenre> ContentGenres { get; set; }
         [InverseProperty("Content")]
-        public virtual ICollection<Favourite> Favourites { get; set; }
+        public virtual List<Favourite> Favourites { get; set; }
         [InverseProperty("Content")]
-        public virtual ICollection<Season> Seasons { get; set; }
+        public virtual List<Season> Seasons { get; set; }
     }
 }
