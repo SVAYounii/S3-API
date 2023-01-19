@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\S3-API\S3-Api-indi.csproj" />
+    <ProjectReference Include="..\API\S3-Api-indi.csproj" />
   </ItemGroup>
 
 </Project>
