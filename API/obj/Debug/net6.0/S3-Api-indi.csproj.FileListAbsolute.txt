@@ -812,3 +812,9 @@ C:\Users\youne\source\repos\S3-API\API\obj\Debug\net6.0\S3-Api-indi.pdb
 C:\Users\youne\source\repos\S3-API\API\obj\Debug\net6.0\S3-Api-indi.genruntimeconfig.cache
 C:\Users\youne\source\repos\S3-API\API\obj\Debug\net6.0\ref\S3-Api-indi.dll
 C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\appsettings.Docker.json
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\System.Web.Cors.dll
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\System.Web.Http.Cors.dll
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\youne\source\repos\S3-API\API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

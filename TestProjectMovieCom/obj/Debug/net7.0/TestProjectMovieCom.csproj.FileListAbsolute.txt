@@ -349,3 +349,9 @@ C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\TestProj
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\TestProjectMovieCom.genruntimeconfig.cache
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\obj\Debug\net7.0\ref\TestProjectMovieCom.dll
 C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\appsettings.Docker.json
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\System.Web.Cors.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\System.Net.Http.Formatting.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\System.Web.Http.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\System.Web.Http.Cors.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\youne\source\repos\S3-API\TestProjectMovieCom\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
