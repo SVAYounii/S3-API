@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("127.0.0.1:3006").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                          policy.WithOrigins("localhost:3006", "localhost:3006/Login").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                       });
 });
 
