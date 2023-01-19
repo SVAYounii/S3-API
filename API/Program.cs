@@ -9,7 +9,6 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyPolicy",
@@ -26,6 +25,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 var jwtSection = builder.Configuration.GetSection("JWTSettings");
 builder.Services.Configure<JWTSettings>(jwtSection);
+builder.Services.AddEndpointsApiExplorer();
 
 
 
@@ -54,7 +54,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5000");
+int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT-PORT") ?? "5000");
 
 if (!builder.Environment.IsDevelopment())
 {
@@ -73,7 +73,6 @@ if (!builder.Environment.IsDevelopment())
     });
 }
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
