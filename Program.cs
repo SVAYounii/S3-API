@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<MoviceComContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
+options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString") ?? builder.Configuration.GetConnectionString("dbconn")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
