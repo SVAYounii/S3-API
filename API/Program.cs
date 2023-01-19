@@ -54,11 +54,6 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-var app = builder.Build();
-
 int port = Convert.ToInt32(Environment.GetEnvironmentVariable("HTTPS-PORT") ?? "5000");
 
 if (!builder.Environment.IsDevelopment())
@@ -77,6 +72,11 @@ if (!builder.Environment.IsDevelopment())
         options.HttpsPort = port;
     });
 }
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
