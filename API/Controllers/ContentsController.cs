@@ -12,7 +12,7 @@ using S3_Api_indi.Models;
 
 namespace S3_Api_indi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ContentsController : ControllerBase
