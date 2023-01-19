@@ -60,7 +60,7 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT-PORT") ?? "5000");
+int port = Convert.ToInt32(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT") ?? "5000");
 
 if (!builder.Environment.IsDevelopment())
 {
