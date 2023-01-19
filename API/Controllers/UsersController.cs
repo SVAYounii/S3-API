@@ -130,7 +130,7 @@ namespace S3_Api_indi.Controllers
         }
 
         // POST: api/Users
-        [HttpPost("Login")]
+        [HttpPost("Login/")]
         public async Task<ActionResult<User>> Login([FromBody] User user)
         {
             user = await _context.Users

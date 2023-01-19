@@ -5,6 +5,12 @@ using S3_Api_indi.Models;
 using System.Net;
 using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication;
+using System.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.CodeAnalysis.Options;
+using System.Web.Http.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
 
