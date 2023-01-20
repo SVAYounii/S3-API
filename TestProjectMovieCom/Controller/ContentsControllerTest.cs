@@ -4,7 +4,7 @@ using TestProject.Repository;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace TestProjectMovieCom.Controllers
+namespace TestProjectMovieCom.ControllersF
 {
     public class ContentsControllerTest
     {
