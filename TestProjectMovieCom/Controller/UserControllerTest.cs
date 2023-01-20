@@ -3,10 +3,11 @@ using S3_Api_indi.Controllers;
 using TestProject.Repository;
 using FluentAssertions;
 using Xunit;
+using Assert = Xunit.Assert;
 
-namespace TestProjectMovieCom
+namespace TestProjectMovieCom.Controllers
 {
-    public class UserTest
+    public class UserControllerTest
     {
         DatabaseContext _dbcontext = new DatabaseContext();
 
@@ -14,9 +15,9 @@ namespace TestProjectMovieCom
         public async void Should_BeNotNull_WhenGetGenre()
         {
             //Arange
-            string name = "GenreName: 7";
+            string name = "Genre: 7";
             int id = 8;
-            var DbContext = await _dbcontext.GetDatabaseContext();
+            var DbContext = await _dbcontext.GetDatabaseContextWithValue();
             var GenrController = new GenresController(DbContext);
 
             //Act
@@ -24,16 +25,14 @@ namespace TestProjectMovieCom
 
             //Assert
             result.Should().NotBeNull();
-            Assert.Equals(result.Result.Value.Name, name);
+            Assert.Equal(result.Result.Value.Name, name);
         }
 
         [Fact]
         public async void Should_BeNotNull_WhenGetAllGenre()
         {
             //Arange
-            string name = "GenreName: 7";
-            int id = 8;
-            var DbContext = await _dbcontext.GetDatabaseContext();
+            var DbContext = await _dbcontext.GetDatabaseContextWithValue();
             var GenrController = new GenresController(DbContext);
 
             //Act

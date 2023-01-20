@@ -16,7 +16,9 @@
           "NUnit3TestAdapter": "4.2.1",
           "S3-Api-indi": "1.0.0",
           "coverlet.collector": "3.1.2",
-          "xunit.extensibility.core": "2.4.2"
+          "xunit": "2.4.2",
+          "xunit.extensibility.core": "2.4.2",
+          "xunit.runner.visualstudio": "2.4.5"
         },
         "runtime": {
           "TestProjectMovieCom.dll": {}
@@ -2399,12 +2401,37 @@
           }
         }
       },
+      "xunit/2.4.2": {
+        "dependencies": {
+          "xunit.analyzers": "1.0.0",
+          "xunit.assert": "2.4.2",
+          "xunit.core": "2.4.2"
+        }
+      },
       "xunit.abstractions/2.0.3": {
         "runtime": {
           "lib/netstandard2.0/xunit.abstractions.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.0.0.0"
           }
+        }
+      },
+      "xunit.analyzers/1.0.0": {},
+      "xunit.assert/2.4.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.assert.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "xunit.core/2.4.2": {
+        "dependencies": {
+          "xunit.extensibility.core": "2.4.2",
+          "xunit.extensibility.execution": "2.4.2"
         }
       },
       "xunit.extensibility.core/2.4.2": {
@@ -2419,6 +2446,19 @@
           }
         }
       },
+      "xunit.extensibility.execution/2.4.2": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "xunit.extensibility.core": "2.4.2"
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "assemblyVersion": "2.4.2.0",
+            "fileVersion": "2.4.2.0"
+          }
+        }
+      },
+      "xunit.runner.visualstudio/2.4.5": {},
       "S3-Api-indi/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
@@ -3681,6 +3721,13 @@
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
+    "xunit/2.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Mj73Ont3zj2CJuoykVJfE0ZmRwn7C+pTuRP8c4bnaaTFjwNG6tGe0prJ1yIbMe9AHrpDys63ctWacSsFJWK/w==",
+      "path": "xunit/2.4.2",
+      "hashPath": "xunit.2.4.2.nupkg.sha512"
+    },
     "xunit.abstractions/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3688,12 +3735,47 @@
       "path": "xunit.abstractions/2.0.3",
       "hashPath": "xunit.abstractions.2.0.3.nupkg.sha512"
     },
+    "xunit.analyzers/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BeO8hEgs/c8Ls2647fPfieMngncvf0D0xYNDfIO59MolxtCtVjFRd6SRc+7tj8VMqkVOuJcnc9eh4ngI2cAmLQ==",
+      "path": "xunit.analyzers/1.0.0",
+      "hashPath": "xunit.analyzers.1.0.0.nupkg.sha512"
+    },
+    "xunit.assert/2.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pxJISOFjn2XTTi1mcDCkRZrTFb9OtRRCtx2kZFNF51GdReLr1ls2rnyxvAS4JO247K3aNtflvh5Q0346K5BROA==",
+      "path": "xunit.assert/2.4.2",
+      "hashPath": "xunit.assert.2.4.2.nupkg.sha512"
+    },
+    "xunit.core/2.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KB4yGCxNqIVyekhJLXtKSEq6BaXVp/JO3mbGVE1hxypZTLEe7h+sTbAhpA+yZW2dPtXTuiW+C1B2oxxHEkrmOw==",
+      "path": "xunit.core/2.4.2",
+      "hashPath": "xunit.core.2.4.2.nupkg.sha512"
+    },
     "xunit.extensibility.core/2.4.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-W1BoXTIN1C6kpVSMw25huSet25ky6IAQUNovu3zGOGN/jWnbgSoTyCrlIhmXSg0tH5nEf8q7h3OjNHOjyu5PfA==",
       "path": "xunit.extensibility.core/2.4.2",
       "hashPath": "xunit.extensibility.core.2.4.2.nupkg.sha512"
+    },
+    "xunit.extensibility.execution/2.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CZmgcKkwpyo8FlupZdWpJCryrAOWLh1FBPG6gmVZuPQkGQsim/oL4PcP4nfrC2hHgXUFtluvaJ0Sp9PQKUMNpg==",
+      "path": "xunit.extensibility.execution/2.4.2",
+      "hashPath": "xunit.extensibility.execution.2.4.2.nupkg.sha512"
+    },
+    "xunit.runner.visualstudio/2.4.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OwHamvBdUKgqsXfBzWiCW/O98BTx81UKzx2bieIOQI7CZFE5NEQZGi8PBQGIKawDW96xeRffiNf20SjfC0x9hw==",
+      "path": "xunit.runner.visualstudio/2.4.5",
+      "hashPath": "xunit.runner.visualstudio.2.4.5.nupkg.sha512"
     },
     "S3-Api-indi/1.0.0": {
       "type": "project",

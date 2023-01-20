@@ -26,7 +26,7 @@ namespace S3_Api_indi.Controllers
 
         // GET: api/Contents
         [HttpGet("GetMovies/")]
-        public async Task<ActionResult<IEnumerable<Content>>> GetContents()
+        public async Task<ActionResult<IEnumerable<Content>>> GetContentsMovie()
         {
             return await _context.Contents.Where(s => s.Movie == 1).ToListAsync();
         }
@@ -77,6 +77,10 @@ namespace S3_Api_indi.Controllers
             var ContentGenre = new List<int>();
 
             var id = await _context.ContentGenres.Where(g => g.GenreId == genreId).ToListAsync();
+            if (id.Count == 0)
+            {
+                return NotFound();
+            }
             for (int i = 0; i < id.Count; i++)
             {
                 ContentGenre.Add((int)id[i].ContentId);
@@ -84,6 +88,11 @@ namespace S3_Api_indi.Controllers
             }
 
             var content = await _context.Contents.Where(c => ContentGenre.Contains(c.Id)).ToListAsync();
+
+            if (content == null)
+            {
+                return NotFound();
+            }
 
             for (int i = 0; i < content.Count; i++)
             {
@@ -99,10 +108,6 @@ namespace S3_Api_indi.Controllers
 
 
 
-            if (content == null)
-            {
-                return NotFound();
-            }
 
             return content;
         }
@@ -204,7 +209,7 @@ namespace S3_Api_indi.Controllers
         }
 
         [HttpPost("CreateMovie")]
-        public async Task<ActionResult<Content>> CreateMovie([FromBody]Content content)
+        public async Task<ActionResult<Content>> CreateMovie([FromBody] Content content)
         {
             _context.Contents.Add(content);
             await _context.SaveChangesAsync();
